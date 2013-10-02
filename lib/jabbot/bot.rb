@@ -1,6 +1,7 @@
 require 'logger'
 require File.join(File.expand_path(File.dirname(__FILE__)), 'macros')
 require File.join(File.expand_path(File.dirname(__FILE__)), 'handlers')
+require File.join(File.expand_path(File.dirname(__FILE__)), 'timers')
 
 require 'eventmachine'
 
@@ -42,6 +43,7 @@ module Jabbot
   # It handles the connection as well as the method dispatching.
   class Bot
     include Jabbot::Handlers
+    include Jabbot::Timers
     attr_reader :client
     attr_reader :users
 
@@ -154,6 +156,8 @@ module Jabbot
             EventMachine.stop_event_loop
           end
         end
+
+        schedule_periodic_events
       end
     end
 

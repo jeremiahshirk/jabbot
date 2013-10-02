@@ -75,6 +75,15 @@ module Jabbot
       add_handler(:subject, pattern, options, &blk)
     end
     alias_method :topic, :subject
+    
+    # Add periodic event callback
+    # Block gets executed whenever the timer expires
+    #
+    # period - time between invocations of the callback in seconds
+    # blk    - the block to execute every period
+    def every(period, &blk)
+      bot.add_periodic(period, &blk)
+    end
 
     # Returns the Jabber::Client instance used
     # You may execute low-level functions on this object if needed

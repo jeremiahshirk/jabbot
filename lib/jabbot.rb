@@ -11,6 +11,7 @@ require 'jabbot/bot.rb'
 require 'jabbot/config.rb'
 require 'jabbot/handlers.rb'
 require 'jabbot/macros.rb'
+require 'jabbot/timers.rb'
 
 module Jabbot
   @@app_file = lambda do
