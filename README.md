@@ -140,6 +140,7 @@ There are two examples in the [samples][] directory:
 ## Contributors
 
 * Christian Johansen (cjohansen) (author of Twibot) - http://www.cjohansen.no
+* Jeremiah Shirk (jeremiahshirk)
 
 ## License
 

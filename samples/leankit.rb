@@ -19,7 +19,7 @@ LeanKitKanban::Config.password = ENV['LEANKIT_PASSWORD']
 LeanKitKanban::Config.account  = ENV['LEANKIT_ACCOUNT']
 board_id = ENV['LEANKIT_BOARDID']
 version_id = 0
-
+debug = true
 
 every 30 do
   begin
@@ -30,8 +30,8 @@ every 30 do
     end
     
     last_events = LeanKitKanban::Board.get_board_history_since(board_id, version_id)[0]
+    pp [Time.now.getutc, last_events] if debug
     if last_events
-      pp last_events
       last_events.each do |event|
         if event['CardId'] > 0 # Numerous events messages have CardId == -1
           post "#{event['Message']}"
